@@ -69,6 +69,10 @@
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
 # TODO!
+    Movie.destroy_all
+    Person.destroy_all
+    Role.destroy_all
+
 
 # Generate models and tables, according to the domain model
 # TODO!
@@ -77,6 +81,34 @@
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
+new_person = Person.new
+new_person.name = "Christopher Nolan"
+new_person.save
+
+christopher = Person.where({ name: "Christopher Nolan" })[0]
+christopher_id = christopher.id
+
+new_movie = Movie.new
+new_movie.title = "Batman Begins."
+new_movie.year_released = "2005"
+new_movie.rated = "PG-13"
+new_movie.person_id = christopher_id
+new_movie.save
+
+new_movie = Movie.new
+new_movie.title = "The Dark Knight"
+new_movie.year_released = "2008"
+new_movie.rated = "PG-13"
+new_movie.person_id = christopher_id
+new_movie.save
+
+new_movie = Movie.new
+new_movie.title = "The Dark Knight Rises"
+new_movie.year_released = "2012"
+new_movie.rated = "PG-13"
+new_movie.person_id = christopher_id
+new_movie.save
+
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
@@ -84,6 +116,8 @@ puts ""
 
 # Query the movies data and loop through the results to display the movies output
 # TODO!
+
+
 
 # Prints a header for the cast output
 puts ""
