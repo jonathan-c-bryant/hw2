@@ -81,6 +81,8 @@
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
+# Movies and Director
+
 new_person = Person.new
 new_person.name = "Christopher Nolan"
 new_person.save
@@ -88,7 +90,7 @@ new_person.save
 christopher = Person.where({ name: "Christopher Nolan" })[0]
 
 new_movie = Movie.new
-new_movie.title = "Batman Begins."
+new_movie.title = "Batman Begins"
 new_movie.year_released = "2005"
 new_movie.rated = "PG-13"
 new_movie.person_id = christopher.id
@@ -113,10 +115,7 @@ dark_knight = Movie.where({ title: "The Dark Knight" })[0]
 dark_knight_rises = Movie.where({ title: "The Dark Knight Rises" })[0]
 
 
-
-
-# Batman Begins
-
+# Batman Begins: People
 new_person = Person.new
 new_person.name = "Christian Bale"
 new_person.save
@@ -137,12 +136,15 @@ new_person = Person.new
 new_person.name = "Gary Oldman"
 new_person.save
 
-bale = Person.where({ name: "Christian Bale" })[0]
-caine = Person.where({ name: "Michael Caine" })[0]
-neeson = Person.where({ name: "Liam Neson" })[0]
-holmes = Person.where({ name: "Katie Holmes" })[0]
-oldman = Person.where({ name: "Gary Oldman" })[0]
+bale = Person.where({ name: "Christian Bale"})[0]
+caine = Person.where({ name: "Michael Caine"})[0]
+neeson = Person.where({ name: "Liam Neeson"})[0]
+holmes = Person.where({ name: "Katie Holmes"})[0]
+oldman = Person.where({ name: "Gary Oldman"})[0]
 
+
+
+# Batman Begins: Characters
 new_role = Role.new
 new_role.movie_id = batman_begins.id
 new_role.person_id = bale.id
@@ -174,13 +176,108 @@ new_role.character_name = "Commissioner Gordon"
 new_role.save
 
 
+# The Dark Knight: People
+
+new_person = Person.new
+new_person.name = "Heath Ledger"
+new_person.save
+
+new_person = Person.new
+new_person.name = "Aaron Eckhart"
+new_person.save
+
+new_person = Person.new
+new_person.name = "Maggie Gyllenhaal"
+new_person.save
+
+ledger = Person.where({ name: "Heath Ledger"})[0]
+eckhart = Person.where({ name: "Aaron Eckhart"})[0]
+gyllenhaal = Person.where({ name: "Maggie Gyllenhaal"})[0]
+
+
+# The Dark Knight: Characters
+new_role = Role.new
+new_role.movie_id = dark_knight.id
+new_role.person_id = bale.id
+new_role.character_name = "Bruce Wayne"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = dark_knight.id
+new_role.person_id = ledger.id
+new_role.character_name = "Joker"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = dark_knight.id
+new_role.person_id = eckhart.id
+new_role.character_name = "Harvey Dent"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = dark_knight.id
+new_role.person_id = caine.id
+new_role.character_name = "Alfred"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = dark_knight.id
+new_role.person_id = gyllenhaal.id
+new_role.character_name = "Rachel Dawes"
+new_role.save
 
 
 
 
-# The Dark Knight
+# The Dark Knight Rises: People
+new_person = Person.new
+new_person.name = "Tom Hardy"
+new_person.save
 
-# The Dark Knight Rises
+new_person = Person.new
+new_person.name = "Joseph Gordon-Levitt"
+new_person.save
+
+new_person = Person.new
+new_person.name = "Anne Hathaway"
+new_person.save
+
+hardy = Person.where({ name: "Tom Hardy"})[0]
+levitt = Person.where({ name: "Joseph Gordon-Levitt"})[0]
+hathaway = Person.where({ name: "Anne Hathaway"})[0]
+
+
+# Batman Begins: Characters
+new_role = Role.new
+new_role.movie_id = dark_knight_rises.id
+new_role.person_id = bale.id
+new_role.character_name = "Bruce Wayne"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = dark_knight_rises.id
+new_role.person_id = oldman.id
+new_role.character_name = "Commissioner Gordon"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = dark_knight_rises.id
+new_role.person_id = hardy.id
+new_role.character_name = "Bane"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = dark_knight_rises.id
+new_role.person_id = levitt.id
+new_role.character_name = "John Blake"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = dark_knight_rises.id
+new_role.person_id = hathaway.id
+new_role.character_name = "Selina Kyle"
+new_role.save
+
 
 
 # Prints a header for the movies output
@@ -203,5 +300,4 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie
 # TODO!
-
 
