@@ -81,15 +81,11 @@
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-
-
-
 new_person = Person.new
 new_person.name = "Christopher Nolan"
 new_person.save
 
 christopher = Person.where({ name: "Christopher Nolan" })[0]
-puts christopher.id
 
 new_movie = Movie.new
 new_movie.title = "Batman Begins."
@@ -112,6 +108,81 @@ new_movie.rated = "PG-13"
 new_movie.person_id = christopher.id
 new_movie.save
 
+batman_begins = Movie.where({ title: "Batman Begins" })[0]
+dark_knight = Movie.where({ title: "The Dark Knight" })[0]
+dark_knight_rises = Movie.where({ title: "The Dark Knight Rises" })[0]
+
+
+
+
+# Batman Begins
+
+new_person = Person.new
+new_person.name = "Christian Bale"
+new_person.save
+
+new_person = Person.new
+new_person.name = "Michael Caine"
+new_person.save
+
+new_person = Person.new
+new_person.name = "Liam Neeson"
+new_person.save
+
+new_person = Person.new
+new_person.name = "Katie Holmes"
+new_person.save
+
+new_person = Person.new
+new_person.name = "Gary Oldman"
+new_person.save
+
+bale = Person.where({ name: "Christian Bale" })[0]
+caine = Person.where({ name: "Michael Caine" })[0]
+neeson = Person.where({ name: "Liam Neson" })[0]
+holmes = Person.where({ name: "Katie Holmes" })[0]
+oldman = Person.where({ name: "Gary Oldman" })[0]
+
+new_role = Role.new
+new_role.movie_id = batman_begins.id
+new_role.person_id = bale.id
+new_role.character_name = "Bruce Wayne"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = batman_begins.id
+new_role.person_id = caine.id
+new_role.character_name = "Alfred"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = batman_begins.id
+new_role.person_id = neeson.id
+new_role.character_name = "Ra's Al Ghul"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = batman_begins.id
+new_role.person_id = holmes.id
+new_role.character_name = "Rachel Dawes"
+new_role.save
+
+new_role = Role.new
+new_role.movie_id = batman_begins.id
+new_role.person_id = oldman.id
+new_role.character_name = "Commissioner Gordon"
+new_role.save
+
+
+
+
+
+
+# The Dark Knight
+
+# The Dark Knight Rises
+
+
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
@@ -120,7 +191,9 @@ puts ""
 # Query the movies data and loop through the results to display the movies output
 # TODO!
 
-
+for movie in christopher.movies
+    puts "#{movie.title} #{movie.year_released} #{movie.rated} #{movie.person.name}"
+end
 
 # Prints a header for the cast output
 puts ""
@@ -130,3 +203,5 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie
 # TODO!
+
+
